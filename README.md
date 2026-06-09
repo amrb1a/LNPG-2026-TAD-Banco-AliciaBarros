@@ -1,1 +1,12 @@
 # LNPG-2026-TAD-Banco-AliciaBarros
+Este projeto implementa um pequeno sistema bancário em Python utilizando os conceitos de Tipos Abstratos de Dados, encapsulamento, composição, agregação, subprogramas e regras de negócio. O sistema possui três entidades principais: Cliente, Banco e ContaBancaria.
+
+Durante a implementação, foram criados subprogramas para organizar melhor o código e evitar repetição. Na classe Cliente, foram criados métodos privados como __validar_nome, __validar_cpf, __validar_telefone, __validar_email e __limpar_numeros. Esses métodos ajudam a garantir que os dados do cliente sejam conferidos antes de serem armazenados. Por exemplo, o CPF pode ser digitado com ou sem pontuação, então o método __limpar_numeros remove pontos e traços, deixando apenas os números.
+
+Na classe Banco, foram criados métodos para validar o nome e o código, além de métodos para adicionar, remover, buscar e listar contas. O método buscar_conta é importante porque também é utilizado dentro de outros métodos, como adicionar_conta e remover_conta. Assim, o código fica mais simples e evita repetição de lógica.
+
+Os relacionamentos entre Banco, Cliente e ContaBancaria foram implementados usando referências entre objetos. Uma conta bancária possui um titular, que é um objeto da classe Cliente, e também possui um banco associado, que é um objeto da classe Banco. O banco possui uma lista de contas, mostrando que ele pode administrar várias contas bancárias. Um cliente também pode possuir mais de uma conta, como aparece no programa principal, onde a cliente Ana possui duas contas.
+
+As regras de negócio que exigiram maior atenção foram as validações dos dados, principalmente CPF, telefone, e-mail e número da conta. Também foi necessário impedir que duas contas com o mesmo número fossem cadastradas no mesmo banco. Outra parte importante foi garantir que depósitos e saques só alterassem o saldo quando fossem válidos. Por exemplo, valores negativos não podem ser depositados e um saque só pode acontecer quando existe saldo suficiente.
+
+O encapsulamento foi utilizado por meio de atributos privados, representados com dois underlines, como __nome, __cpf e __saldo. Dessa forma, os dados internos das classes não são acessados diretamente fora delas. Para consultar ou alterar informações, são usados métodos públicos, como get_nome, alterar_email, depositar e sacar. A abstração aparece porque cada classe representa uma ideia do mundo real, escondendo detalhes internos e oferecendo apenas as operações necessárias para usar o sistema.
